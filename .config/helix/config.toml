@@ -1,0 +1,102 @@
+# helix --tutor to learn helix. Its actually pretty good
+
+# https://docs.helix-editor.com/keymap.html
+# https://docs.helix-editor.com/remapping.html
+
+# catppuccin_latte
+# nightfox
+# amberwood
+# catppuccin_mocha
+# rose_pine
+# night_owl_modified
+# base16_transparent
+# black
+theme = "black"
+
+[editor]
+line-number = "relative"
+cursorline = true
+rulers = [90]
+auto-completion = true
+true-color = true
+# gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+# color-modes = true
+# bufferline = "always"
+idle-timeout=0
+completion-trigger-len = 1
+
+# [editor.cursor-shape]
+# insert = "bar"
+# select = "underline"
+# normal = "block"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = ["mode", "file-name", "spinner"]
+center = []
+#right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = ["diagnostics", "position", "file-type"]
+separator = "│"
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "C"
+
+[editor.lsp]
+enable = true
+# auto-signature-help	= false
+[editor.smart-tab]
+enable = false
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[keys.normal]
+# C-s = ":w"
+C-b = ["keep_primary_selection", "collapse_selection"]
+X = "extend_line_up"
+D = "delete_char_forward"
+"tab" = ":buffer-next"
+"S-tab" = ":buffer-previous"
+C-n = "move_line_down"
+C-p = "move_line_up"
+# emulate key press
+# u = "@g"
+
+[keys.normal." "]
+q = ":buffer-close"
+" " = "buffer_picker"
+o = "file_picker_in_current_buffer_directory"
+
+# [keys.normal."C-x"]
+# "C-f" = "file_picker"
+
+[keys.insert]
+"C-[" = "normal_mode"
+# C-l = "move_char_right"
+C-s = "signature_help"
+C-n = "move_line_down"
+C-p = "move_line_up"
+C-b = "move_char_left"
+C-f = "move_char_right"
+
+[keys.select]
+"C-[" = ["normal_mode", "keep_primary_selection", "collapse_selection"]
+
+[keys.normal."+"]
+f = ":pipe fmt --width=80"
+# m = ":pipe-to ~/.config/tmux/tman"
+m = ["yank_to_clipboard", ":sh man `wl-paste`"]
+# sh = run-shell-commnd
+c = ":sh cargo build"
+t = [":sh zathura *.pdf", ":sh typst w *.typ"]
+z = [":sh zola serve", ":sh brave http://127.0.0.1:1111"]
+g = [":sh ./gradlew -t :bootjar", ":sh ./gradlew bootrun"]
+s = [":sh ./gradlew -t :bootjar", ":sh ./gradlew bootrun"]
+
+
+# Alt-o Alt-i increment lsp selection
+# Alt-n Alt-p next lsp selection
+# "% copies the buffer name
+# toggle-option command is very handy

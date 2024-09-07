@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+output=$(hyprctl -j clients | jq 'map(select(.mapped == true) | {title, workspace})')
+
+result=$(echo $output | jq -r '.[] | (.workspace["id"]|tostring) + " " + .title' | while read -r workspace_title; do printf "$workspace_title\n"; done)
+echo ${result}
+
+query=$(printf "$result" | bemenu --list 10 --prompt "system" --ignorecase --fn "Iosevka Extended 30" --prompt "wrksp" --tf "#7e37fa" --hf "#000000" --hb "#ffffff")
+
+hyprctl dispatch workspace ${query: 0:2}
+

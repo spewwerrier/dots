@@ -1,0 +1,5 @@
+source ~/.config/nnn/quitcd.bash_zsh
+
+export NNN_PLUG='b:bulknew;c:cdpath;f:fzopen;g:getplugs;i:imgur;l:launch;p:preview-tui;r:renamer;w:wallpaper;'
+export NNN_FIFO=/tmp/nnn.fifo
+export TERMINAL='tmux'

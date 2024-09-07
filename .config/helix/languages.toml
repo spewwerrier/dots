@@ -1,0 +1,52 @@
+# Just for reference
+# https://github.com/helix-editor/helix/blob/master/languages.toml
+
+
+# https://www.kernel.org/doc/html/v4.10/process/coding-style.html 
+# if you need more than 3 levels of indentation, you’re screwed anyway, and should fix your program. 
+
+
+[[language]]
+name = "make"
+scope = "source.make"
+file-types = ["Makefile", "makefile", "make", "mk", "GNUmakefile"]
+injection-regex = "(make|makefile|Makefile|mk|GNUmakefile)"
+roots = []
+comment-token = "#"
+indent = { tab-width = 4, unit = "\t" }
+
+
+# [language-server.html.config.html]
+# auto-format = false
+
+[language-server.metals.config.metals]
+autoImportBuild = "all"
+
+
+[language-server.tinymist]
+command = "tinymist"
+config = { exportPdf = "onType", outputPath = "$root/target/$dir/$name" }
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist"]
+
+
+[[language]]
+name = "html"
+auto-format = false
+
+[[language]]
+name = "css"
+auto-format = false
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+injection-regex = "(tsx)" # |typescript
+language-id = "typescriptreact"
+file-types = ["tsx"]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server", "tailwindcss-language-server"]
+indent = { tab-width = 2, unit = "  " }
