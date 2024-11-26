@@ -1,0 +1,47 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      "alt-b": null,
+      "alt-f": null,
+      "shift-escape": null
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-n": null,
+      "ctrl-p": null,
+      "space q": "pane::CloseActiveItem",
+      "space f": "file_finder::Toggle",
+      "alt-e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-f": ["terminal::SendKeystroke", "alt-f"],
+      "alt-b": ["terminal::SendKeystroke", "alt-b"]
+    }
+  },
+  // https://github.com/zed-industries/zed/issues/7270
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      "shift-c": "editor::AddSelectionBelow",
+      "alt-c": "editor::AddSelectionAbove"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g D": ["workspace::SendKeystrokes", "ctrl-w v ctrl-w w g d"]
+    }
+  }
+]
